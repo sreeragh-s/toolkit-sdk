@@ -1,0 +1,10 @@
+{
+  "name": "@notelab/example-vercel-ai",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@notelab/toolkit": "*",
+    "@notelab/toolkit-vercel": "*",
+    "ai": "^6.0.193"
+  }
+}
