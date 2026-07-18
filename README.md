@@ -8,20 +8,20 @@ credentials or provider clients.
 ## Install
 
 ```sh
-npm install @notelab/toolkit
+npm install ai-toolkit-sdk
 ```
 
 Applications using Vercel AI SDK tools also need the adapter and its peer
 dependency:
 
 ```sh
-npm install @notelab/toolkit-vercel ai
+npm install ai-toolkit-sdk ai
 ```
 
 ## Create a client
 
 ```ts
-import { Toolkit } from "@notelab/toolkit";
+import { Toolkit } from "ai-toolkit-sdk";
 
 const toolkit = new Toolkit({
   apiKey: process.env.TOOLKIT_API_KEY!,
@@ -79,8 +79,8 @@ exactly once; retry decisions remain with the application.
 ## Use Vercel AI SDK
 
 ```ts
-import { Toolkit } from "@notelab/toolkit";
-import { vercelProvider } from "@notelab/toolkit-vercel";
+import { Toolkit } from "ai-toolkit-sdk";
+import { vercelProvider } from "ai-toolkit-sdk/vercel";
 
 const toolkit = new Toolkit({
   apiKey: process.env.TOOLKIT_API_KEY!,
@@ -98,7 +98,7 @@ Backend-managed intent phrases help the model select tools. Presentation copy
 is kept out of prompts and is attached as AI SDK tool metadata for status UI:
 
 ```ts
-import { getToolkitToolMetadata } from "@notelab/toolkit-vercel/metadata";
+import { getToolkitToolMetadata } from "ai-toolkit-sdk/vercel/metadata";
 
 const metadata = getToolkitToolMetadata(part.toolMetadata);
 const statusOptions = metadata?.presentation.progressPhrases;

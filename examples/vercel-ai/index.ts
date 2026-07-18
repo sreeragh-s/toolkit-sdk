@@ -1,6 +1,6 @@
-import { Toolkit } from "@notelab/toolkit";
-import { vercelProvider } from "@notelab/toolkit-vercel";
-import { getToolkitToolMetadata } from "@notelab/toolkit-vercel/metadata";
+import { Toolkit } from "ai-toolkit-sdk";
+import { vercelProvider } from "ai-toolkit-sdk/vercel";
+import { getToolkitToolMetadata } from "ai-toolkit-sdk/vercel/metadata";
 import { streamText, type LanguageModel } from "ai";
 
 const toolkit = new Toolkit({

@@ -1,10 +1,10 @@
-# `@notelab/toolkit`
+# `ai-toolkit-sdk`
 
 Framework-neutral TypeScript client for the NoteLab Toolkit API. Use it only
 in trusted server runtimes because construction requires a project API key.
 
 ```ts
-import { Toolkit } from "@notelab/toolkit";
+import { Toolkit } from "ai-toolkit-sdk";
 
 const toolkit = new Toolkit({
   apiKey: process.env.TOOLKIT_API_KEY!,
@@ -22,5 +22,35 @@ The client defaults to `https://toolkit.notelab.io/api/toolkit`. Pass a full
 HTTP or HTTPS `baseUrl` for another deployment. An injected `fetch`, request
 timeout, and abort signals are supported for server runtime integration.
 
-The `@notelab/toolkit/protocol` subpath exposes types generated from the public
+The `ai-toolkit-sdk/protocol` subpath exposes types generated from the public
 OpenAPI contract. It does not expose backend implementation details.
+
+## Vercel AI SDK
+
+Install the optional `ai` peer dependency to convert Toolkit descriptors into
+Vercel AI SDK 6 tools:
+
+```ts
+import { Toolkit } from "ai-toolkit-sdk";
+import { vercelProvider } from "ai-toolkit-sdk/vercel";
+
+const toolkit = new Toolkit({
+  apiKey: process.env.TOOLKIT_API_KEY!,
+  provider: vercelProvider(),
+});
+
+const tools = await toolkit.tools.get("user_123", {
+  connectors: ["github"],
+  read: "all",
+  write: [],
+});
+```
+
+Browser UI code can read tool-call presentation data without loading the
+server adapter:
+
+```ts
+import { getToolkitToolMetadata } from "ai-toolkit-sdk/vercel/metadata";
+
+const metadata = getToolkitToolMetadata(part.toolMetadata);
+```
