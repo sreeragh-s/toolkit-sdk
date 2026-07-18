@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { vercelProvider } from "../dist/index.js";
+import { vercelProvider } from "../dist/vercel/index.js";
 
 const descriptor = {
   access: "read",
@@ -93,7 +93,7 @@ test("rejects tool identifiers that normalize to the same name", () => {
 });
 
 test("browser entrypoint rejects adapter construction", async () => {
-  const browser = await import("../dist/browser.js");
+  const browser = await import("../dist/vercel/browser.js");
 
   assert.throws(
     () => browser.vercelProvider(),

@@ -4,7 +4,7 @@ import test from "node:test";
 import {
   getToolkitToolMetadata,
   TOOLKIT_TOOL_METADATA_KEY,
-} from "../dist/metadata.js";
+} from "../dist/vercel/metadata.js";
 
 const validMetadata = {
   notelabToolkit: {

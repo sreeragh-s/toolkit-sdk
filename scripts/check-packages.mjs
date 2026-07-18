@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process";
 
-const workspaces = ["@notelab/toolkit", "@notelab/toolkit-vercel"];
+const workspaces = ["ai-toolkit-sdk"];
 const rootFiles = new Set(["package.json", "README.md", "LICENSE"]);
 const privatePath = /(?:^|\/)(?:src|server|database|db|drizzle|migrations?|providers?|connector-runtime|ui|credentials?|cloudflare|wrangler)(?:\/|\.|$)/i;
 

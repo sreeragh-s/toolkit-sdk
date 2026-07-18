@@ -1,5 +1,5 @@
 {
-  "name": "@notelab/toolkit",
+  "name": "ai-toolkit-sdk",
   "version": "0.1.0",
   "description": "Server-side TypeScript SDK for NoteLab Toolkit connectors and tools.",
   "type": "module",
@@ -24,6 +24,18 @@
     "./protocol": {
       "types": "./dist/generated/api.d.ts",
       "default": "./dist/protocol.js"
+    },
+    "./vercel": {
+      "browser": {
+        "types": "./dist/vercel/browser.d.ts",
+        "default": "./dist/vercel/browser.js"
+      },
+      "types": "./dist/vercel/index.d.ts",
+      "default": "./dist/vercel/index.js"
+    },
+    "./vercel/metadata": {
+      "types": "./dist/vercel/metadata.d.ts",
+      "default": "./dist/vercel/metadata.js"
     }
   },
   "scripts": {
@@ -34,6 +46,17 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "peerDependencies": {
+    "ai": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "ai": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "ai": "^6.0.193"
   },
   "publishConfig": {
     "access": "public",

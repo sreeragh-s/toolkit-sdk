@@ -1,4 +1,4 @@
-import type { ToolkitProvider } from "@notelab/toolkit";
+import type { ToolkitProvider } from "../types.js";
 import { jsonSchema, tool, type ToolSet } from "ai";
 
 function normalizeToolName(toolId: string): string {
