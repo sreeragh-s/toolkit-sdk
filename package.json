@@ -8,16 +8,22 @@
   ],
   "scripts": {
     "build": "npm run build --workspace @notelab/toolkit && npm run build --workspace @notelab/toolkit-vercel",
+    "changeset": "changeset",
+    "ci": "npm run contract:check && npm run typecheck && npm test && npm run examples:check && npm run pack:check",
     "contract:generate": "openapi-typescript openapi/toolkit-v1.json -o packages/core/src/generated/api.ts",
     "contract:check": "node scripts/check-generated.mjs",
     "examples:check": "tsc -p examples/vercel-ai/tsconfig.json --noEmit",
+    "pack:check": "node scripts/check-packages.mjs",
+    "release": "changeset publish",
     "typecheck": "npm run build --workspace @notelab/toolkit && npm run typecheck --workspace @notelab/toolkit && npm run typecheck --workspace @notelab/toolkit-vercel",
-    "test": "npm run test --workspace @notelab/toolkit && npm run test --workspace @notelab/toolkit-vercel"
+    "test": "npm run test --workspace @notelab/toolkit && npm run test --workspace @notelab/toolkit-vercel",
+    "version-packages": "changeset version"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "@types/node": "^24.0.0",
     "openapi-typescript": "^7.10.1",
     "typescript": "^5.8.3"
