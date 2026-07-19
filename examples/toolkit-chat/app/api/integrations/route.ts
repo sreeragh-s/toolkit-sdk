@@ -5,6 +5,7 @@ import {
   getToolkitReturnUrl,
   getToolkitUserId,
   getToolkitWriteTools,
+  isToolkitChatConnector,
 } from "@/lib/toolkit";
 
 function errorResponse(error: unknown) {
@@ -23,8 +24,12 @@ export async function GET() {
     ]);
 
     return Response.json({
-      connectors: connectors.items,
-      accounts: accounts.items,
+      connectors: connectors.items.filter((connector) =>
+        isToolkitChatConnector(connector.id),
+      ),
+      accounts: accounts.items.filter((account) =>
+        isToolkitChatConnector(account.connectorId),
+      ),
     });
   } catch (error) {
     return errorResponse(error);
@@ -37,6 +42,12 @@ export async function POST(request: Request) {
     const connectorId = body.connectorId?.trim();
     if (!connectorId) {
       return Response.json({ error: "connectorId is required." }, { status: 400 });
+    }
+    if (!isToolkitChatConnector(connectorId)) {
+      return Response.json(
+        { error: "Connector is not available in Toolkit Chat." },
+        { status: 404 },
+      );
     }
 
     const connection = await getToolkit().connectors.authorize(

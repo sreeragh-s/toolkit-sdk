@@ -4,6 +4,9 @@ A Next.js chat example using Vercel AI SDK 6 and the local `ai-toolkit-sdk`
 package. It is based on Vercel's `next-openai-telemetry` example with all
 OpenTelemetry dependencies and runtime instrumentation removed.
 
+The example exposes GitHub, Gmail, Google Calendar, and Google Drive. Other
+Toolkit platform connectors remain available to applications that enable them.
+
 ## Setup
 
 From this directory:

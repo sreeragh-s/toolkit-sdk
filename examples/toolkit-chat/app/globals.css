@@ -178,6 +178,29 @@ button { color: inherit; }
 .message-content { min-width: 0; flex: 1; padding-top: 2px; }
 .message-author { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 700; }
 .message-text { margin: 0 0 9px; color: #27272a; font-size: 14px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.message-markdown { min-width: 0; color: #27272a; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.message-markdown > :first-child { margin-top: 0; }
+.message-markdown > :last-child { margin-bottom: 0; }
+.message-markdown p { margin: 0 0 9px; }
+.message-markdown h1,
+.message-markdown h2,
+.message-markdown h3 { margin: 18px 0 8px; line-height: 1.35; }
+.message-markdown h1 { font-size: 20px; }
+.message-markdown h2 { font-size: 17px; }
+.message-markdown h3 { font-size: 15px; }
+.message-markdown ul,
+.message-markdown ol { margin: 7px 0 12px; padding-left: 22px; }
+.message-markdown li + li { margin-top: 4px; }
+.message-markdown a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+.message-markdown blockquote { margin: 12px 0; border-left: 3px solid #bde5d3; padding-left: 12px; color: #52525b; }
+.message-markdown hr { margin: 18px 0; border: 0; border-top: 1px solid var(--line); }
+.message-markdown table { display: block; width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+.message-markdown th,
+.message-markdown td { border: 1px solid var(--line); padding: 7px 9px; text-align: left; }
+.message-markdown th { background: #f4f4f5; font-weight: 650; }
+.message-markdown :not(pre) > code { border-radius: 4px; background: #f4f4f5; padding: 2px 5px; font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.message-markdown pre { max-width: 100%; margin: 12px 0; overflow: auto; border-radius: 6px; background: #18181b; padding: 12px; color: #fafafa; font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.message-markdown pre code { background: transparent; padding: 0; color: inherit; }
 .typing-message { min-height: 50px; }
 .typing-indicator { display: inline-flex; height: 18px; align-items: center; gap: 4px; }
 .typing-indicator span { width: 6px; height: 6px; border-radius: 50%; background: #a1a1aa; animation: typing-pulse 1.1s ease-in-out infinite; }

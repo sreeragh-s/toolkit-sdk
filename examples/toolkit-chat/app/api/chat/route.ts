@@ -9,6 +9,7 @@ import { ToolkitError } from "ai-toolkit-sdk";
 
 import {
   getToolkit,
+  TOOLKIT_CHAT_CONNECTORS,
   getToolkitUserId,
   getToolkitWriteTools,
 } from "@/lib/toolkit";
@@ -39,6 +40,7 @@ export async function POST(request: Request) {
 
     const writeTools = getToolkitWriteTools();
     const tools = await getToolkit().tools.get(getToolkitUserId(), {
+      connectors: [...TOOLKIT_CHAT_CONNECTORS],
       read: "all",
       write: writeTools,
     });

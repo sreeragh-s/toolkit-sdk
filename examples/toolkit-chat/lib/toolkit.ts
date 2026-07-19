@@ -5,6 +5,19 @@ import { vercelProvider } from "ai-toolkit-sdk/vercel";
 
 let toolkit: Toolkit<ReturnType<typeof vercelProvider>> | undefined;
 
+export const TOOLKIT_CHAT_CONNECTORS = [
+  "github",
+  "gmail",
+  "google-calendar",
+  "google-drive",
+] as const;
+
+const toolkitChatConnectorIds = new Set<string>(TOOLKIT_CHAT_CONNECTORS);
+
+export function isToolkitChatConnector(connectorId: string) {
+  return toolkitChatConnectorIds.has(connectorId);
+}
+
 export function getToolkit() {
   const apiKey = process.env.TOOLKIT_API_KEY?.trim();
   if (!apiKey) {
@@ -28,7 +41,13 @@ export function getToolkitWriteTools(connectorId?: string) {
   const tools = (process.env.TOOLKIT_WRITE_TOOLS ?? "")
     .split(",")
     .map((toolId) => toolId.trim())
-    .filter(Boolean);
+    .filter(
+      (toolId) =>
+        toolId &&
+        TOOLKIT_CHAT_CONNECTORS.some((allowed) =>
+          toolId.startsWith(`${allowed}.`),
+        ),
+    );
 
   return connectorId
     ? tools.filter((toolId) => toolId.startsWith(`${connectorId}.`))

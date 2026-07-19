@@ -15,6 +15,7 @@ import {
   User,
 } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { Streamdown } from "streamdown";
 
 import { IntegrationsPanel } from "@/components/integrations-panel";
 import { ToolActivity } from "@/components/tool-activity";
@@ -117,7 +118,19 @@ export function Chat() {
               <div className="message-content">
                 <span className="message-author">{message.role === "user" ? "You" : "Toolkit"}</span>
                 {message.parts.map((part, index) => {
-                  if (part.type === "text") return <p className="message-text" key={index}>{part.text}</p>;
+                  if (part.type === "text") {
+                    return message.role === "assistant" ? (
+                      <Streamdown
+                        className="message-markdown"
+                        isAnimating={status === "streaming" && part.state === "streaming"}
+                        key={index}
+                      >
+                        {part.text}
+                      </Streamdown>
+                    ) : (
+                      <p className="message-text" key={index}>{part.text}</p>
+                    );
+                  }
                   if (isToolUIPart(part)) {
                     return (
                       <ToolActivity
