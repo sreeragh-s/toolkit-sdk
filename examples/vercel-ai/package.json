@@ -1,5 +1,5 @@
 {
-  "name": "@notelab/example-vercel-ai",
+  "name": "@zilobase/example-vercel-ai",
   "private": true,
   "type": "module",
   "dependencies": {

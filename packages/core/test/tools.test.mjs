@@ -150,7 +150,7 @@ test("converts descriptors through a provider and delegates execution", async ()
   assert.deepEqual(context.tools, [descriptor]);
   assert.equal(
     executionRequest.url,
-    "https://toolkit.notelab.io/api/toolkit/v1/tools/github.issue%2Fcreate/execute",
+    "https://api.toolkit-sdk.dev/v1/tools/github.issue%2Fcreate/execute",
   );
   assert.deepEqual(JSON.parse(executionRequest.init.body), {
     userId: "user_1",
@@ -201,7 +201,7 @@ test("searches tools and preserves discovery metadata", async () => {
 
   assert.equal(
     request.url,
-    "https://toolkit.notelab.io/api/toolkit/v1/tools/search",
+    "https://api.toolkit-sdk.dev/v1/tools/search",
   );
   assert.deepEqual(JSON.parse(request.init.body), {
     query: "open a bug report",

@@ -28,7 +28,7 @@ export function vercelProvider(): ToolkitProvider<ToolSet> {
           ),
           inputSchema: jsonSchema(descriptor.inputSchema),
           metadata: {
-            notelabToolkit: {
+            zilobaseToolkit: {
               access: descriptor.access,
               connectorId: descriptor.connectorId,
               presentation: {

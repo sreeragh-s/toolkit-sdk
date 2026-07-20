@@ -1,6 +1,6 @@
 # `ai-toolkit-sdk`
 
-Framework-neutral TypeScript client for the NoteLab Toolkit API. Use it only
+Framework-neutral TypeScript client for the Zilobase Toolkit API. Use it only
 in trusted server runtimes because construction requires a project API key.
 
 ```ts
@@ -18,7 +18,7 @@ const tools = await toolkit.tools.get("user_123", {
 });
 ```
 
-The client defaults to `https://toolkit.notelab.io/api/toolkit`. Pass a full
+The client defaults to `https://api.toolkit-sdk.dev`. Pass a full
 HTTP or HTTPS `baseUrl` for another deployment. An injected `fetch`, request
 timeout, and abort signals are supported for server runtime integration.
 

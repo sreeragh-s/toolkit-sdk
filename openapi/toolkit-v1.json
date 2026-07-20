@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "NoteLab Toolkit API",
+    "title": "Toolkit API",
     "version": "1.0.0",
     "description": "Server-only API for connector discovery, authorization, connected accounts, and tool execution."
   },
   "servers": [
     {
-      "url": "https://toolkit.notelab.io/api/toolkit"
+      "url": "https://api.toolkit-sdk.dev"
     }
   ],
   "security": [
@@ -320,7 +320,9 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["userId"],
+                "required": [
+                  "userId"
+                ],
                 "properties": {
                   "userId": {
                     "type": "string",
@@ -425,15 +427,28 @@
       },
       "ToolAccess": {
         "type": "string",
-        "enum": ["read", "write"]
+        "enum": [
+          "read",
+          "write"
+        ]
       },
       "ConnectionRequestStatus": {
         "type": "string",
-        "enum": ["pending", "active", "failed", "expired"]
+        "enum": [
+          "pending",
+          "active",
+          "failed",
+          "expired"
+        ]
       },
       "Connector": {
         "type": "object",
-        "required": ["id", "name", "description", "authMethods"],
+        "required": [
+          "id",
+          "name",
+          "description",
+          "authMethods"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -458,7 +473,9 @@
       },
       "ConnectorList": {
         "type": "object",
-        "required": ["items"],
+        "required": [
+          "items"
+        ],
         "properties": {
           "items": {
             "type": "array",
@@ -522,7 +539,10 @@
       },
       "ToolPresentation": {
         "type": "object",
-        "required": ["title", "progressPhrases"],
+        "required": [
+          "title",
+          "progressPhrases"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -537,7 +557,9 @@
       },
       "ToolList": {
         "type": "object",
-        "required": ["items"],
+        "required": [
+          "items"
+        ],
         "properties": {
           "items": {
             "type": "array",
@@ -552,7 +574,9 @@
       },
       "ToolQuery": {
         "type": "object",
-        "required": ["userId"],
+        "required": [
+          "userId"
+        ],
         "properties": {
           "userId": {
             "type": "string",
@@ -604,7 +628,9 @@
           },
           {
             "type": "object",
-            "required": ["catalogVersion"],
+            "required": [
+              "catalogVersion"
+            ],
             "properties": {
               "catalogVersion": {
                 "type": "string"
@@ -615,7 +641,10 @@
       },
       "ExecuteToolRequest": {
         "type": "object",
-        "required": ["userId", "arguments"],
+        "required": [
+          "userId",
+          "arguments"
+        ],
         "properties": {
           "userId": {
             "type": "string"
@@ -629,14 +658,19 @@
       },
       "ExecuteToolResponse": {
         "type": "object",
-        "required": ["result"],
+        "required": [
+          "result"
+        ],
         "properties": {
           "result": true
         }
       },
       "SearchToolsRequest": {
         "type": "object",
-        "required": ["query", "userId"],
+        "required": [
+          "query",
+          "userId"
+        ],
         "properties": {
           "query": {
             "type": "string",
@@ -683,7 +717,11 @@
           },
           "status": {
             "type": "string",
-            "enum": ["active", "expired", "revoked"]
+            "enum": [
+              "active",
+              "expired",
+              "revoked"
+            ]
           },
           "isDefault": {
             "type": "boolean"
@@ -700,7 +738,9 @@
       },
       "ConnectedAccountList": {
         "type": "object",
-        "required": ["items"],
+        "required": [
+          "items"
+        ],
         "properties": {
           "items": {
             "type": "array",
@@ -715,7 +755,11 @@
       },
       "AuthorizeConnectedAccountRequest": {
         "type": "object",
-        "required": ["userId", "connectorId", "redirectUrl"],
+        "required": [
+          "userId",
+          "connectorId",
+          "redirectUrl"
+        ],
         "properties": {
           "userId": {
             "type": "string",
@@ -759,7 +803,12 @@
       },
       "ConnectionRequest": {
         "type": "object",
-        "required": ["id", "redirectUrl", "status", "expiresAt"],
+        "required": [
+          "id",
+          "redirectUrl",
+          "status",
+          "expiresAt"
+        ],
         "properties": {
           "id": {
             "type": "string",
@@ -786,7 +835,10 @@
       },
       "ConnectionFailure": {
         "type": "object",
-        "required": ["code", "message"],
+        "required": [
+          "code",
+          "message"
+        ],
         "properties": {
           "code": {
             "type": "string"
@@ -798,11 +850,16 @@
       },
       "ErrorEnvelope": {
         "type": "object",
-        "required": ["error"],
+        "required": [
+          "error"
+        ],
         "properties": {
           "error": {
             "type": "object",
-            "required": ["code", "message"],
+            "required": [
+              "code",
+              "message"
+            ],
             "properties": {
               "code": {
                 "type": "string"

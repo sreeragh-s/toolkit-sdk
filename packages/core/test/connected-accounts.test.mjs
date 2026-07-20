@@ -49,7 +49,7 @@ test("creates authorization requests with stable access defaults", async () => {
   assert.equal(request.redirectUrl, "https://accounts.example.com/oauth");
   assert.equal(
     captured.input,
-    "https://toolkit.notelab.io/api/toolkit/v1/connected-accounts/authorize",
+    "https://api.toolkit-sdk.dev/v1/connected-accounts/authorize",
   );
   assert.equal(captured.init.method, "POST");
   assert.deepEqual(JSON.parse(captured.init.body), {
@@ -114,7 +114,7 @@ test("manages user-scoped connected accounts", async () => {
   assert.deepEqual(selected, account);
   assert.equal(
     requests[0].url,
-    "https://toolkit.notelab.io/api/toolkit/v1/connected-accounts?userId=user_1&connectorId=gmail&cursor=cursor_1&limit=10",
+    "https://api.toolkit-sdk.dev/v1/connected-accounts?userId=user_1&connectorId=gmail&cursor=cursor_1&limit=10",
   );
   assert.equal(requests[1].url.endsWith(`${account.id}?userId=user_1`), true);
   assert.equal(requests[2].method, "PATCH");

@@ -7,7 +7,7 @@ import {
 } from "../dist/vercel/metadata.js";
 
 const validMetadata = {
-  notelabToolkit: {
+  zilobaseToolkit: {
     access: "read",
     connectorId: "gmail",
     presentation: {
@@ -20,25 +20,25 @@ const validMetadata = {
 };
 
 test("exports the stable metadata key", () => {
-  assert.equal(TOOLKIT_TOOL_METADATA_KEY, "notelabToolkit");
+  assert.equal(TOOLKIT_TOOL_METADATA_KEY, "zilobaseToolkit");
 });
 
 test("returns valid Toolkit metadata unchanged", () => {
   const result = getToolkitToolMetadata(validMetadata);
 
-  assert.equal(result, validMetadata.notelabToolkit);
+  assert.equal(result, validMetadata.zilobaseToolkit);
 });
 
 test("accepts write metadata and additional fields", () => {
   const metadata = {
-    notelabToolkit: {
-      ...validMetadata.notelabToolkit,
+    zilobaseToolkit: {
+      ...validMetadata.zilobaseToolkit,
       access: "write",
       additionalData: "ignored",
     },
   };
 
-  assert.equal(getToolkitToolMetadata(metadata), metadata.notelabToolkit);
+  assert.equal(getToolkitToolMetadata(metadata), metadata.zilobaseToolkit);
 });
 
 test("rejects non-object and missing metadata containers", () => {
@@ -46,19 +46,19 @@ test("rejects non-object and missing metadata containers", () => {
   assert.equal(getToolkitToolMetadata(null), undefined);
   assert.equal(getToolkitToolMetadata([]), undefined);
   assert.equal(getToolkitToolMetadata({}), undefined);
-  assert.equal(getToolkitToolMetadata({ notelabToolkit: null }), undefined);
+  assert.equal(getToolkitToolMetadata({ zilobaseToolkit: null }), undefined);
 });
 
 test("rejects unknown schema versions and access values", () => {
   assert.equal(
     getToolkitToolMetadata({
-      notelabToolkit: { ...validMetadata.notelabToolkit, schemaVersion: 2 },
+      zilobaseToolkit: { ...validMetadata.zilobaseToolkit, schemaVersion: 2 },
     }),
     undefined,
   );
   assert.equal(
     getToolkitToolMetadata({
-      notelabToolkit: { ...validMetadata.notelabToolkit, access: "admin" },
+      zilobaseToolkit: { ...validMetadata.zilobaseToolkit, access: "admin" },
     }),
     undefined,
   );
@@ -68,7 +68,7 @@ test("rejects missing or blank identifiers", () => {
   for (const field of ["connectorId", "toolId"]) {
     assert.equal(
       getToolkitToolMetadata({
-        notelabToolkit: { ...validMetadata.notelabToolkit, [field]: "  " },
+        zilobaseToolkit: { ...validMetadata.zilobaseToolkit, [field]: "  " },
       }),
       undefined,
     );
@@ -87,7 +87,7 @@ test("rejects invalid presentation metadata", () => {
   for (const presentation of invalidPresentations) {
     assert.equal(
       getToolkitToolMetadata({
-        notelabToolkit: { ...validMetadata.notelabToolkit, presentation },
+        zilobaseToolkit: { ...validMetadata.zilobaseToolkit, presentation },
       }),
       undefined,
     );

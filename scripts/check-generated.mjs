@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 
-const directory = await mkdtemp(resolve(tmpdir(), "notelab-toolkit-contract-"));
+const directory = await mkdtemp(resolve(tmpdir(), "zilobase-toolkit-contract-"));
 const candidate = resolve(directory, "api.ts");
 const executable = resolve(
   "node_modules/.bin",

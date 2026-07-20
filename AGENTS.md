@@ -1,6 +1,6 @@
 # SDK Repository Guide
 
-This repository publishes framework-neutral clients for the NoteLab Toolkit
+This repository publishes framework-neutral clients for the Zilobase Toolkit
 API. Framework-specific behavior belongs in explicit adapter packages.
 
 ## Repository boundaries

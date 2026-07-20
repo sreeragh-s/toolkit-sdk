@@ -1,4 +1,4 @@
-export const TOOLKIT_TOOL_METADATA_KEY = "notelabToolkit";
+export const TOOLKIT_TOOL_METADATA_KEY = "zilobaseToolkit";
 
 export type ToolkitToolMetadata = {
   access: "read" | "write";

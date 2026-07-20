@@ -68,7 +68,7 @@ test("uses the hosted API URL by default", async () => {
 
   assert.equal(
     requestUrl,
-    "https://toolkit.notelab.io/api/toolkit/v1/connectors",
+    "https://api.toolkit-sdk.dev/v1/connectors",
   );
 });
 
@@ -93,7 +93,7 @@ test("gets connectors using an encoded identifier", async () => {
   assert.deepEqual(result, connector);
   assert.equal(
     requestUrl,
-    "https://toolkit.notelab.io/api/toolkit/v1/connectors/github%2Fapps",
+    "https://api.toolkit-sdk.dev/v1/connectors/github%2Fapps",
   );
 });
 

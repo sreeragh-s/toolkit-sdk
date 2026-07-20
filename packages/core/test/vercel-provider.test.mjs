@@ -45,7 +45,7 @@ test("creates AI SDK tools backed by Toolkit execution", async () => {
   assert.equal(generated.title, "List GitHub repos");
   assert.equal(generated.needsApproval, false);
   assert.deepEqual(generated.metadata, {
-    notelabToolkit: {
+    zilobaseToolkit: {
       access: "read",
       connectorId: "github",
       presentation: {
@@ -60,11 +60,11 @@ test("creates AI SDK tools backed by Toolkit execution", async () => {
     },
   });
 
-  const result = await generated.execute({ owner: "notelab" }, {});
+  const result = await generated.execute({ owner: "zilobase" }, {});
 
   assert.deepEqual(result, { ok: true });
   assert.deepEqual(calls, [
-    ["github.repositories/list", { owner: "notelab" }, "account_1"],
+    ["github.repositories/list", { owner: "zilobase" }, "account_1"],
   ]);
 });
 

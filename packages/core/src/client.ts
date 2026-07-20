@@ -17,7 +17,7 @@ import type {
   ToolSelection,
 } from "./types.js";
 
-const DEFAULT_BASE_URL = "https://toolkit.notelab.io/api/toolkit";
+const DEFAULT_BASE_URL = "https://api.toolkit-sdk.dev";
 const DEFAULT_TIMEOUT_MS = 30_000;
 
 function normalizeBaseUrl(value: string): string {

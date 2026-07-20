@@ -1,6 +1,6 @@
-# NoteLab Toolkit SDK
+# Zilobase Toolkit SDK
 
-TypeScript clients for using a hosted or self-hosted NoteLab Toolkit backend
+TypeScript clients for using a hosted or self-hosted Zilobase Toolkit backend
 from trusted server runtimes. The SDK covers connector discovery, account
 authorization, tool selection, and tool execution without bundling connector
 credentials or provider clients.
@@ -31,7 +31,7 @@ const toolkit = new Toolkit({
 const connectors = await toolkit.connectors.list();
 ```
 
-The default hosted endpoint is `https://toolkit.notelab.io/api/toolkit`.
+The default hosted endpoint is `https://api.toolkit-sdk.dev`.
 Provide `baseUrl` only when using another deployment.
 
 ## Authorize an account
@@ -69,7 +69,7 @@ const matches = await toolkit.tools.search("open a GitHub issue", {
 
 const result = await toolkit.tools.execute("github.issue.create", {
   userId: "user_123",
-  arguments: { owner: "notelab", repository: "app", title: "Build failure" },
+  arguments: { owner: "zilobase", repository: "app", title: "Build failure" },
 });
 ```
 
