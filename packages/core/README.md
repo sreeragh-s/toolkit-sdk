@@ -18,9 +18,10 @@ const tools = await toolkit.tools.get("user_123", {
 });
 ```
 
-The client always uses the live API at `https://api.toolkit-sdk.dev`. An
-injected `fetch`, request timeout, and abort signals are supported for server
-runtime integration.
+The client uses the live API at `https://api.toolkit-sdk.dev` by default. A
+trusted server can set `baseUrl` to `http://localhost:3100` for local Toolkit
+development. An injected `fetch`, request timeout, and abort signals are
+supported for server runtime integration.
 
 The `@zilobase/toolkit/protocol` subpath exposes types generated from the public
 OpenAPI contract. It does not expose backend implementation details.
