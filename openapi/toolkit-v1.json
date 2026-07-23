@@ -691,7 +691,6 @@
           "name",
           "description",
           "access",
-          "exposure",
           "annotations",
           "presentation",
           "requiredScopes",
@@ -724,9 +723,6 @@
           },
           "inputSchema": {
             "$ref": "#/components/schemas/JsonSchema"
-          },
-          "exposure": {
-            "$ref": "#/components/schemas/ToolExposure"
           },
           "annotations": {
             "$ref": "#/components/schemas/ToolAnnotations"
@@ -814,14 +810,6 @@
               "type": "string",
               "format": "uuid"
             }
-          },
-          "exposure": {
-            "type": "string",
-            "enum": [
-              "all",
-              "core",
-              "extended"
-            ]
           }
         }
       },
@@ -1091,13 +1079,6 @@
           }
         }
       },
-      "ToolExposure": {
-        "type": "string",
-        "enum": [
-          "core",
-          "extended"
-        ]
-      },
       "ToolAnnotations": {
         "type": "object",
         "required": [
@@ -1137,15 +1118,6 @@
               "type": "string"
             }
           },
-          "exposure": {
-            "type": "string",
-            "enum": [
-              "all",
-              "core",
-              "extended"
-            ],
-            "default": "core"
-          },
           "limit": {
             "type": "integer",
             "minimum": 1,
@@ -1163,7 +1135,6 @@
           "title",
           "description",
           "access",
-          "exposure",
           "annotations",
           "score"
         ],
@@ -1185,9 +1156,6 @@
           },
           "access": {
             "$ref": "#/components/schemas/ToolAccess"
-          },
-          "exposure": {
-            "$ref": "#/components/schemas/ToolExposure"
           },
           "annotations": {
             "$ref": "#/components/schemas/ToolAnnotations"

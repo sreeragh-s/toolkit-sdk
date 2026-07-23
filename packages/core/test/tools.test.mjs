@@ -15,7 +15,6 @@ const descriptor = {
     openWorldHint: true,
     readOnlyHint: false,
   },
-  exposure: "core",
   presentation: {
     title: "Create GitHub issue",
     progressPhrases: ["Preparing the GitHub issue"],
@@ -215,7 +214,6 @@ test("searches tools and preserves discovery metadata", async () => {
     connectors: ["github"],
     limit: 5,
   });
-  assert.equal(result.items[0].exposure, "core");
   assert.deepEqual(result.items[0].presentation, {
     title: "Create GitHub issue",
     progressPhrases: ["Preparing the GitHub issue"],
@@ -268,7 +266,6 @@ test("provides exactly three router tools and delegates compact routing calls", 
   );
   assert.deepEqual(requests[0].body, {
     query: "find calendar availability",
-    exposure: "core",
     limit: 6,
   });
 });
@@ -281,5 +278,26 @@ test("limits router direct-tool preloads to 20", async () => {
     }),
     (error) =>
       error instanceof ToolkitError && error.code === "INVALID_TOOL_SELECTION",
+  );
+});
+
+test("adds only explicitly preloaded direct tools to the router", async () => {
+  const toolkit = new Toolkit({
+    apiKey: "project_key",
+    fetch: async () => json({ items: [descriptor] }),
+  });
+
+  const tools = await toolkit.router.get("user_1", {
+    preload: [descriptor.id],
+  });
+
+  assert.deepEqual(
+    tools.map((tool) => tool.id),
+    [
+      "toolkit.router.search",
+      "toolkit.router.schemas",
+      "toolkit.router.execute",
+      descriptor.id,
+    ],
   );
 });

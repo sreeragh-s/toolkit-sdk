@@ -24,7 +24,6 @@ export type {
   ToolAccess,
   ToolAnnotations,
   ToolDescriptor,
-  ToolExposure,
   ToolPresentation,
   ToolReadSelection,
   ToolSelection,

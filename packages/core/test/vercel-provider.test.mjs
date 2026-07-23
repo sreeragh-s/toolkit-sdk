@@ -13,7 +13,6 @@ const descriptor = {
   },
   connectorId: "github",
   description: "List repositories",
-  exposure: "core",
   id: "github.repositories/list",
   inputSchema: {
     type: "object",
@@ -55,7 +54,6 @@ test("creates AI SDK tools backed by Toolkit execution", async () => {
       access: "read",
       annotations: descriptor.annotations,
       connectorId: "github",
-      exposure: "core",
       presentation: {
         progressPhrases: [
           "Listing GitHub repositories",

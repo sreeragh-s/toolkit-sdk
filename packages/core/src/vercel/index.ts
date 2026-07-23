@@ -24,7 +24,6 @@ export function vercelProvider(): ToolkitProvider<ToolSet> {
               access: descriptor.access,
               annotations: descriptor.annotations,
               connectorId: descriptor.connectorId,
-              exposure: descriptor.exposure,
               presentation: {
                 progressPhrases: [...descriptor.presentation.progressPhrases],
                 title: descriptor.presentation.title,

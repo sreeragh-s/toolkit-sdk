@@ -270,7 +270,6 @@ export interface components {
             presentation: components["schemas"]["ToolPresentation"];
             requiredScopes: string[];
             inputSchema: components["schemas"]["JsonSchema"];
-            exposure: components["schemas"]["ToolExposure"];
             annotations: components["schemas"]["ToolAnnotations"];
         };
         ToolPresentation: {
@@ -289,8 +288,6 @@ export interface components {
             /** @default [] */
             write: string[];
             connectedAccountIds?: string[];
-            /** @enum {string} */
-            exposure?: "all" | "core" | "extended";
         };
         ToolQueryResponse: components["schemas"]["ToolList"] & {
             catalogVersion: string;
@@ -365,8 +362,6 @@ export interface components {
                 details?: unknown;
             };
         };
-        /** @enum {string} */
-        ToolExposure: "core" | "extended";
         ToolAnnotations: {
             readOnlyHint: boolean;
             destructiveHint: boolean;
@@ -376,11 +371,6 @@ export interface components {
         RouterSearchRequest: {
             query: string;
             connectors?: string[];
-            /**
-             * @default core
-             * @enum {string}
-             */
-            exposure: "all" | "core" | "extended";
             /** @default 6 */
             limit: number;
         };
@@ -391,7 +381,6 @@ export interface components {
             title: string;
             description: string;
             access: components["schemas"]["ToolAccess"];
-            exposure: components["schemas"]["ToolExposure"];
             annotations: components["schemas"]["ToolAnnotations"];
             score: number;
         };

@@ -16,7 +16,6 @@ const validMetadata = {
       readOnlyHint: true,
     },
     connectorId: "gmail",
-    exposure: "core",
     presentation: {
       progressPhrases: ["Opening the Gmail message"],
       title: "Read Gmail message",

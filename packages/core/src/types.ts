@@ -9,7 +9,6 @@ export type ToolDescriptor = Schemas["ToolDescriptor"];
 export type ToolPresentation = Schemas["ToolPresentation"];
 export type ToolAccess = Schemas["ToolAccess"];
 export type ToolAnnotations = Schemas["ToolAnnotations"];
-export type ToolExposure = Schemas["ToolExposure"];
 export type ToolRouterMatch = Schemas["RouterToolMatch"];
 export type JsonSchema = Schemas["JsonSchema"];
 
@@ -31,7 +30,6 @@ export type ToolReadSelection = "all" | string[] | false;
 
 export interface ToolSelection {
   connectors?: string[];
-  exposure?: "all" | ToolExposure;
   read?: ToolReadSelection;
   write?: string[];
   connectedAccountIds?: string[];
@@ -76,7 +74,6 @@ export interface SearchToolsOptions {
 
 export interface RouterSearchOptions extends RequestOptions {
   connectors?: string[];
-  exposure?: "all" | ToolExposure;
   limit?: number;
 }
 

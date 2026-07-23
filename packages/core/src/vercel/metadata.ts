@@ -9,7 +9,6 @@ export type ToolkitToolMetadata = {
     readOnlyHint: boolean;
   };
   connectorId: string;
-  exposure: "core" | "extended";
   presentation: {
     progressPhrases: string[];
     title: string;
@@ -34,9 +33,6 @@ export function getToolkitToolMetadata(
   const candidate = toolMetadata[TOOLKIT_TOOL_METADATA_KEY];
   if (!isRecord(candidate) || candidate.schemaVersion !== 1) return undefined;
   if (candidate.access !== "read" && candidate.access !== "write") {
-    return undefined;
-  }
-  if (candidate.exposure !== "core" && candidate.exposure !== "extended") {
     return undefined;
   }
   if (

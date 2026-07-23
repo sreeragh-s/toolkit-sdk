@@ -182,7 +182,6 @@ export class ToolsResource<Provider extends ToolkitProvider | undefined> {
     const query = {
       userId,
       connectors: selection.connectors,
-      exposure: selection.exposure,
       read: selection.read ?? "all",
       write: selection.write ?? [],
       connectedAccountIds: selection.connectedAccountIds,
@@ -282,13 +281,11 @@ const ROUTER_TOOL_DESCRIPTORS: ToolDescriptor[] = [
     connectorId: "toolkit",
     description:
       "Semantically search the Toolkit catalog and return compact ranked tool matches. Use this before requesting schemas.",
-    exposure: "core",
     id: "toolkit.router.search",
     inputSchema: {
       additionalProperties: false,
       properties: {
         connectors: { items: { type: "string" }, type: "array" },
-        exposure: { enum: ["all", "core", "extended"], type: "string" },
         limit: { maximum: 20, minimum: 1, type: "integer" },
         query: { minLength: 1, type: "string" },
       },
@@ -313,7 +310,6 @@ const ROUTER_TOOL_DESCRIPTORS: ToolDescriptor[] = [
     connectorId: "toolkit",
     description:
       "Retrieve code-backed input schemas for up to 20 selected Toolkit tool IDs.",
-    exposure: "core",
     id: "toolkit.router.schemas",
     inputSchema: {
       additionalProperties: false,
@@ -346,7 +342,6 @@ const ROUTER_TOOL_DESCRIPTORS: ToolDescriptor[] = [
     connectorId: "toolkit",
     description:
       "Execute a selected Toolkit tool by ID after inspecting its schema. Project write and destructive policies are enforced by the server.",
-    exposure: "core",
     id: "toolkit.router.execute",
     inputSchema: {
       additionalProperties: false,
@@ -381,7 +376,6 @@ export class ToolRouterResource<Provider extends ToolkitProvider | undefined> {
     return this.transport.request("/v1/tool-router/search", {
       body: {
         connectors: options.connectors,
-        exposure: options.exposure ?? "core",
         limit: options.limit ?? 6,
         query,
       },
@@ -448,12 +442,6 @@ export class ToolRouterResource<Provider extends ToolkitProvider | undefined> {
             connectors: Array.isArray(input.connectors)
               ? input.connectors.map(String)
               : options.connectors,
-            exposure:
-              input.exposure === "all" ||
-              input.exposure === "core" ||
-              input.exposure === "extended"
-                ? input.exposure
-                : options.exposure,
             limit: typeof input.limit === "number" ? input.limit : options.limit,
             signal: options.signal,
           });
